@@ -13,6 +13,7 @@ public class HealDrop : DropItem
         if (collision.attachedRigidbody && collision.attachedRigidbody.gameObject.CompareTag("Player"))
         {
             damageable = collision.attachedRigidbody.gameObject.GetComponent<Damageable>();
+            ActivateItemFeature();
         }
     }
 

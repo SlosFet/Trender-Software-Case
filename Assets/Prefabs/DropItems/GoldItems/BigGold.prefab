@@ -74,7 +74,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &6782980265832821565
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1611223156719469751, guid: d69eb4e9e1570e344a3db6875cc7a12f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4877446087427396551, guid: d69eb4e9e1570e344a3db6875cc7a12f, type: 3}
       propertyPath: m_Name
       value: P_SquareCoin
@@ -181,6 +185,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4877446087427396551, guid: d69eb4e9e1570e344a3db6875cc7a12f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2250258571363090307}
+    - targetCorrespondingSourceObject: {fileID: 4877446087427396551, guid: d69eb4e9e1570e344a3db6875cc7a12f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3868212310018788851}
   m_SourcePrefab: {fileID: 100100000, guid: d69eb4e9e1570e344a3db6875cc7a12f, type: 3}
 --- !u!4 &3081776212708974551 stripped
 Transform:
@@ -245,3 +252,24 @@ PolygonCollider2D:
       - {x: 0.4015741, y: 0.12341411}
       - {x: 0.11111111, y: 0.41387784}
   m_UseDelaunayMesh: 0
+--- !u!95 &3868212310018788851
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162774173521217703}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8f9b406f3f87154aa47bbbe897fd46a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
