@@ -7,6 +7,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyAI _enemyAI;
     [SerializeField] private EnemyAttack _enemyAttack;
     [SerializeField] private EnemyHealth _enemyHealth;
+    [SerializeField] private EnemyDrop _enemyDrop;
+
+    [SerializeField] private GameObject _mesh;
+
+    private void Start()
+    {
+        _enemyHealth.OnDeath += OnDeath;
+    }
 
     private void Update()
     {
@@ -23,4 +31,16 @@ public class EnemyController : MonoBehaviour
             print("Attacked1");
         }
     }
+
+    private void OnDeath()
+    {
+        _enemyDrop.GetDrop();
+        _mesh.SetActive(false);
+    }
+
+    public void Spawn(Vector3 pos)
+    {
+        transform.position = pos;
+        _mesh.SetActive(true);
+    }    
 }

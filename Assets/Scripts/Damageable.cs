@@ -1,10 +1,12 @@
 using UnityEngine;
-
+using System;
 public class Damageable : MonoBehaviour
 {
     [field: SerializeField] protected float _health;
     [field: SerializeField] protected float _maxHealth;
     public bool isDeath;
+
+    public event Action OnDeath;
 
     public void GetDamage(float damageAmount)
     {
@@ -29,5 +31,6 @@ public class Damageable : MonoBehaviour
     protected virtual void Death()
     {
         isDeath = true;
+        OnDeath();
     }
 }
