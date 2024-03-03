@@ -2168,6 +2168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 3307b5d8d8c4371498d87139967e78f1, type: 2}
+  _dropChancePercent: 75
 --- !u!1 &1575126423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,7 +2420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d715c4243f3097c449e1c7df9a3d228e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: c9a0132e514391a488380909fc3b17f3, type: 2}
 --- !u!1 &1929554398
 GameObject:
   m_ObjectHideFlags: 0

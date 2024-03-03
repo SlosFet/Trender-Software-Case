@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e108de7d49a5749bfed0a6e54c9f86, type: 3}
+  m_Name: AllDropList
+  m_EditorClassIdentifier: 
+  _items:
+  - {fileID: 1129999334271017115, guid: 5007a87d3f1b2f048ac066b77712286a, type: 3}
+  - {fileID: 8097989730099032465, guid: f42ddc57401e0fd49b433ffcd5360bfd, type: 3}
+  - {fileID: 5733998583484721742, guid: 1ce0755a974f3f24b8cd70d41c621120, type: 3}
+  - {fileID: 9079049727103048862, guid: fb7b2bc25cd42cc47a5261ab9f9efb84, type: 3}
+  - {fileID: 8761678605920202715, guid: a5b3e23fde152d943a64e4f8ec02fda7, type: 3}
+  - {fileID: 7238916953132843526, guid: cd32d6b890f02a64ab68c1d2548db0d4, type: 3}

@@ -19,10 +19,18 @@ public class DropManager : MonoBehaviour
         Instantiate(item.gameObject, pos, Quaternion.identity);
     }
 
-
-    public void GetDrop(Vector3 pos,List<DropItem> items)
+    //For one item
+    public void GetDrop(Vector3 pos,DropItem item)
     {
-        DropItem item = items[Random.Range(0, items.Count)];
         Instantiate(item.gameObject, pos, Quaternion.identity);
+    }
+
+    //For multiple but not using now
+    public void GetDrop(Vector3 pos, List<DropItem> items)
+    {
+        foreach (var item in items)
+        {
+            Instantiate(item.gameObject, pos, Quaternion.identity);
+        }
     }
 }
