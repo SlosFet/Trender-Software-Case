@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyAttack _enemyAttack;
     [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private EnemyDrop _enemyDrop;
+    [SerializeField] private EnemyAnimController _enemyAnimController;
 
     [SerializeField] private GameObject _mesh;
 
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _enemyHealth.OnDeath += OnDeath;
+        _enemyHealth.OnGetDamage += _enemyAnimController.HitAnim;
     }
 
     private void Update()

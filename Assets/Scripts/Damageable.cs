@@ -7,12 +7,14 @@ public class Damageable : MonoBehaviour
     public bool isDeath;
 
     public event Action OnDeath;
+    public event Action OnGetDamage;
 
     public virtual void GetDamage(float damageAmount)
     {
         if (isDeath)
             return;
 
+        OnGetDamage();
         SetHealth(-damageAmount);
     }
 

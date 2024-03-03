@@ -35,7 +35,7 @@ public class InputManager : MonoBehaviour
                 OnJumpButtonPressed.Invoke();
 
             if (Input.GetMouseButton(0))
-                OnAttack.Invoke(Input.mousePosition);
+                OnAttack.Invoke(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
             foreach (KeyCode kc in _skillKeyCodes)
             {

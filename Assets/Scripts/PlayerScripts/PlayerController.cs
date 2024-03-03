@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        playerHealth.onGetDamage += playerAnimController.HitAnim;
+        playerHealth.OnGetDamage += playerAnimController.HitAnim;
 
     }
 

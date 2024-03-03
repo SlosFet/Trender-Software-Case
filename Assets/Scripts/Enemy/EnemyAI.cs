@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
     private int currentWaypoint = 0;
     [SerializeField] public RaycastHit2D isGrounded;
     Seeker seeker;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     private bool isOnCoolDown;
     private bool isFearActivated;
 

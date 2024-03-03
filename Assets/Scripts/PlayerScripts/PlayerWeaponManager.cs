@@ -18,8 +18,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private void Attack(Vector3 direction)
     {
-        direction = (transform.position - direction).normalized;
-        direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        direction = (direction - transform.position).normalized;
         _weapon.Attack(direction);
     }
 

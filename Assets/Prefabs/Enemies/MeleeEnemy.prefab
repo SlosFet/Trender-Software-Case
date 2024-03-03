@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5717009993793140125}
   - component: {fileID: 5693510093521604728}
   - component: {fileID: 4749087162491730209}
+  - component: {fileID: 8720986379682763351}
   m_Layer: 8
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -83,10 +84,10 @@ MonoBehaviour:
   _enemyAttack: {fileID: 5717009993793140125}
   _enemyHealth: {fileID: 3930253182253035898}
   _enemyDrop: {fileID: 5693510093521604728}
+  _enemyAnimController: {fileID: 8720986379682763351}
   _mesh: {fileID: 1959867270295076072}
   canSpawnable: 1
   _spawnAgainTime: 0
-  onAttackRbConstraints: 5
 --- !u!114 &8315713071683147180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +115,7 @@ MonoBehaviour:
   isInAir: 0
   directionLookEnabled: 1
   startOffset: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
 --- !u!114 &3682596094499497980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +223,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0.002550967, y: -0.03826481}
   m_Size: {x: 0.19898395, y: 0.25001085}
   m_Direction: 0
+--- !u!114 &8720986379682763351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871442966427966936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c30eb00f6188d43883a2c03f33dd7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Idle: Idle
+  Move: Move
+  Jump: Jump
+  Fall: Fall
+  Hit: Hit
+  _animator: {fileID: 3948486538964420029}
 --- !u!1 &1826878705619737264
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: f6b090b73ca74e246bb72896a87d732f, type: 2}
   coolDownOver: 1
-  isAttacking: 0
   _distance: 3
   _rayPoint: {fileID: 1465145892368606452}
   _desiredLayers:
@@ -284,6 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296741879084001913}
   - component: {fileID: 4157000503602505548}
+  - component: {fileID: 3948486538964420029}
   m_Layer: 8
   m_Name: Mesh
   m_TagString: Untagged
@@ -359,6 +379,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3948486538964420029
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959867270295076072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ffe9b2a34772ee34ca996a3b6c5f4b1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8765231253899377588
 GameObject:
   m_ObjectHideFlags: 0
