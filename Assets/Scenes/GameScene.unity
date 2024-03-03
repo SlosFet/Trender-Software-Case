@@ -4353,6 +4353,7 @@ GameObject:
   - component: {fileID: 1397546422}
   - component: {fileID: 1397546423}
   - component: {fileID: 1397546424}
+  - component: {fileID: 1397546425}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -4439,6 +4440,7 @@ MonoBehaviour:
   Move: Move
   Jump: Jump
   Fall: Fall
+  Hit: Hit
 --- !u!70 &1397546422
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4502,6 +4504,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: {fileID: 1679346198}
+--- !u!114 &1397546425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397546414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5d6678919b2d945a51fd7e8b725ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1476827441
 GameObject:
   m_ObjectHideFlags: 0
@@ -4937,7 +4951,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 4c9db63a38b3d984190e3a4cd0e57d35, type: 2}
   coolDownOver: 1
-  isAttacking: 0
   _missile: {fileID: -6652698620581275996, guid: 62367c0901b725241b78f37e4a891962, type: 3}
   _shootPos: {fileID: 1205794710}
   _shootForce: 500

@@ -7,6 +7,7 @@ public class PlayerAnimController : MonoBehaviour
     [SerializeField] private string Move;
     [SerializeField] private string Jump;
     [SerializeField] private string Fall;
+    [SerializeField] private string Hit;
 
     private Animator _animator;
     private PlayerMovement playerMovement;
@@ -25,6 +26,9 @@ public class PlayerAnimController : MonoBehaviour
 
     private void HandleAnimations()
     {
+        if (_animator.GetBool(Hit))
+            return;
+
         _animator.SetBool(Idle, Mathf.Abs(playerMovement._rb.velocity.magnitude) == 0);
         MoveAnim();
         JumpAnim();
@@ -43,5 +47,19 @@ public class PlayerAnimController : MonoBehaviour
     private void FallAnim()
     {
         _animator.SetBool(Fall, playerMovement._rb.velocity.y < 0);
+    }
+
+    public void HitAnim()
+    {
+        if (_animator.GetBool(Hit))
+            return;
+
+        _animator.SetBool(Hit,true);
+        Invoke(nameof(SetHitFalse), .3f);
+    }
+
+    public void SetHitFalse()
+    {
+        _animator.SetBool(Hit, false);
     }
 }

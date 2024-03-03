@@ -8,7 +8,7 @@ public class Damageable : MonoBehaviour
 
     public event Action OnDeath;
 
-    public void GetDamage(float damageAmount)
+    public virtual void GetDamage(float damageAmount)
     {
         if (isDeath)
             return;
