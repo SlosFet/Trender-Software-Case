@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     public bool jumpEnabled = true, isJumping, isInAir;
     public bool directionLookEnabled = true;
 
-    public bool shouldFollow { get { return (Vector3.Distance(target.position, rb.position) > pathEndDistance); }}
+    public bool shouldFollow { get { return (Vector3.Distance(target.position, rb.position) > pathEndDistance); } }
 
     [SerializeField] Vector3 startOffset;
 
@@ -31,6 +31,17 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
     private bool isOnCoolDown;
+    private bool isFearActivated;
+
+    private void OnEnable()
+    {
+        Fear.ToggleFearSkill.AddListener(ToggleFear);
+    }
+
+    private void OnDisable()
+    {
+        Fear.ToggleFearSkill.RemoveListener(ToggleFear);
+    }
 
     public void Start()
     {
@@ -38,7 +49,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
         isInAir = false;
-        isOnCoolDown = false; 
+        isOnCoolDown = false;
 
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
@@ -75,6 +86,9 @@ public class EnemyAI : MonoBehaviour
 
         // Direction Calculation
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        if (isFearActivated)
+            direction.x *= -1;
+
         Vector2 force = direction * speed;
 
         // Jump
@@ -82,7 +96,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (direction.y > jumpNodeHeightRequirement)
             {
-                if (isInAir) return; 
+                if (isInAir) return;
                 isJumping = true;
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 StartCoroutine(JumpCoolDown());
@@ -92,7 +106,7 @@ public class EnemyAI : MonoBehaviour
         if (isGrounded)
         {
             isJumping = false;
-            isInAir = false; 
+            isInAir = false;
         }
         else
         {
@@ -107,7 +121,7 @@ public class EnemyAI : MonoBehaviour
         if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
-        }        
+        }
     }
 
     public void HandleDirection()
@@ -137,8 +151,10 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator JumpCoolDown()
     {
-        isOnCoolDown = true; 
+        isOnCoolDown = true;
         yield return new WaitForSeconds(1f);
         isOnCoolDown = false;
     }
+
+    private void ToggleFear(bool state) => isFearActivated = state;
 }

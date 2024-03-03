@@ -11,7 +11,6 @@ public class Damageable : MonoBehaviour
     public void GetDamage(float damageAmount)
     {
         SetHealth(-damageAmount);
-        print(gameObject.name);
     }
 
     public void GetHeal(float HealAmount)

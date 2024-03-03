@@ -8,4 +8,11 @@ public class PassiveSkill : Skill
     {
         InvokeRepeating(nameof(ActivateSkill), 0, _coolDown);   
     }
+
+    //Not using for now but if there will be some upgrade like VampireSurvivors can use this
+    public void UpgradeSkillCountDown(float newCoolDown)
+    {
+        CancelInvoke(nameof(ActivateSkill));
+        InvokeRepeating(nameof(ActivateSkill), 0, newCoolDown);
+    }
 }
