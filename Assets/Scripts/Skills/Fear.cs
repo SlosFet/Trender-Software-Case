@@ -15,6 +15,7 @@ public class Fear : ActiveSkill
         ToggleFearSkill.Invoke(true);
         StartCoroutine(Countdowner());
         Invoke(nameof(DeactivateSkill), _skillActionTime);
+        base.ActivateSkill();
     }
 
     private void DeactivateSkill()

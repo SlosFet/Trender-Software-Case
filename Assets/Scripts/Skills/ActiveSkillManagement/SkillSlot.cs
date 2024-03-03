@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class SkillSlot
+public class SkillSlot : MonoBehaviour
 {
     public KeyCode keyCode;
     public ActiveSkill skill;

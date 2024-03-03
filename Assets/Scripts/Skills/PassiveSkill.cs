@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PassiveSkill : Skill
 {
-    void Start()
+    private void Start()
     {
-        InvokeRepeating(nameof(ActivateSkill), 0, _coolDown);   
+        canActivate = true;
+        StartCoroutine(Countdowner());
+    }
+    protected override IEnumerator Countdowner()
+    {
+        while(true)
+        {
+            ActivateSkill();
+            StartCoroutine(base.Countdowner());
+            yield return new WaitForSecondsRealtime(_coolDown);
+        }
+     
     }
 
-    //Not using for now but if there will be some upgrade like VampireSurvivors can use this
-    public void UpgradeSkillCountDown(float newCoolDown)
-    {
-        CancelInvoke(nameof(ActivateSkill));
-        InvokeRepeating(nameof(ActivateSkill), 0, newCoolDown);
-    }
+
 }

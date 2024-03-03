@@ -27,6 +27,7 @@ public class WeaponWell : PassiveSkill
         {
             item.OnShoot(GetRandomDirection(), GetRandomForce());
         }
+        base.ActivateSkill();
     }
 
     private Vector3 GetRandomDirection()

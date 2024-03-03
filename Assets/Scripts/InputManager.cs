@@ -11,7 +11,6 @@ public class InputManager : MonoBehaviour
     public static UnityEvent<Vector3> OnAttack = new UnityEvent<Vector3>();
 
     private float xAxis;
-    [SerializeField] private CurrentOS _currentOs;
 
     //I tried to make it like Diablo skill system but much more simple. This events send to ActiveSkillManager and it order to
     //which slots keycode matches then skill activates
@@ -26,7 +25,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if(_currentOs == CurrentOS.Windows)
+        if(GameManager.Instance.currentOS == CurrentOS.Windows)
         {
             xAxis = Input.GetAxisRaw("Horizontal");
             OnXAxisChange.Invoke(xAxis);
