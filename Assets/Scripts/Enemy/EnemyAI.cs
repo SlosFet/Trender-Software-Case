@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     public Rigidbody2D rb;
     private bool isOnCoolDown;
-    private bool isFearActivated;
+    public bool isFearActivated { get; private set; }
 
     private void OnEnable()
     {
@@ -71,7 +71,7 @@ public class EnemyAI : MonoBehaviour
 
     private void PathFollow()
     {
-        if (path == null || !shouldFollow || !followEnabled)
+        if (path == null || !followEnabled)
         {
             return;
         }

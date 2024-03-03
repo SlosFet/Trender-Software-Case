@@ -118,7 +118,7 @@ MonoBehaviour:
   _enemyAnimController: {fileID: 6882263208091453367}
   _mesh: {fileID: 6790931825136010772}
   canSpawnable: 1
-  _spawnAgainTime: 0
+  _spawnAgainTime: 3
 --- !u!114 &4768105614631879038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4a0c90010cea743b56ad1fd92b5a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 20
-  _maxHealth: 20
+  <_health>k__BackingField: 20
+  <_maxHealth>k__BackingField: 20
   isDeath: 0
   rb: {fileID: 2760330051596822680}
   collider: {fileID: 1624113130284130549}

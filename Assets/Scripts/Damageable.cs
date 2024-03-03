@@ -2,11 +2,12 @@ using UnityEngine;
 using System;
 public class Damageable : MonoBehaviour
 {
-    [field: SerializeField] protected float _health;
-    [field: SerializeField] protected float _maxHealth;
+    [field: SerializeField] public float _health { get; private set; }
+    [field: SerializeField] public float _maxHealth { get; private set; }
     public bool isDeath;
 
     public event Action OnDeath;
+    public event Action OnGetHeal;
     public event Action OnGetDamage;
 
     public virtual void GetDamage(float damageAmount)
@@ -14,13 +15,14 @@ public class Damageable : MonoBehaviour
         if (isDeath)
             return;
 
-        OnGetDamage();
         SetHealth(-damageAmount);
+        OnGetDamage?.Invoke();
     }
 
-    public void GetHeal(float HealAmount)
+    public virtual void GetHeal(float HealAmount)
     {
         SetHealth(HealAmount);
+       // OnGetHeal?.Invoke();
     }
 
     private void SetHealth(float value)
@@ -35,6 +37,6 @@ public class Damageable : MonoBehaviour
     protected virtual void Death()
     {
         isDeath = true;
-        OnDeath();
+        OnDeath?.Invoke();
     }
 }
