@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 10
   CooldownTime: 1
+  attackDuration: 0.8

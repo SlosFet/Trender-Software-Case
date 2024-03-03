@@ -6,12 +6,10 @@ public class Weapon : MonoBehaviour
 {
     public WeaponData weaponData;
     public bool coolDownOver;
-    public bool isAttacking;
     public virtual void Attack(Vector3 direction)
     {
         if (!coolDownOver)
             return;
-        StartCoroutine(CoolDownCounter());
         StartCoroutine(CoolDownCounter());
     }
 
@@ -20,12 +18,5 @@ public class Weapon : MonoBehaviour
         coolDownOver = false;
         yield return new WaitForSecondsRealtime(weaponData.CooldownTime);
         coolDownOver = true;
-    }
-
-    public IEnumerator AttackDurationCountDowner()
-    {
-        isAttacking = true;
-        yield return new WaitForSecondsRealtime(weaponData.attackDuration);
-        isAttacking = false;
     }
 }

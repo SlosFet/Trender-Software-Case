@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
         _enemyAI.HandleDirection();
 
-        if (_enemyAI.shouldFollow && !_enemyAttack.isAttacking)
+        if (_enemyAI.shouldFollow)
             _enemyAI.Move();
         else
         {
