@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RangedWeapon : Weapon
 {
-    [SerializeField] private RangedWeaponMissile _missile;
+    [SerializeField] private ThrowableObject _missile;
     [SerializeField] private Transform _shootPos;
     [SerializeField] private float _shootForce;
     public override void Attack(Vector3 direction)
@@ -12,7 +12,7 @@ public class RangedWeapon : Weapon
         if (!coolDownOver)
             return;
 
-        RangedWeaponMissile missile = Instantiate(_missile.gameObject, _shootPos.position, Quaternion.identity).GetComponent<RangedWeaponMissile>();
+        ThrowableObject missile = Instantiate(_missile.gameObject, _shootPos.position, Quaternion.identity).GetComponent<ThrowableObject>();
         missile.OnShoot(direction, _shootForce, weaponData.Damage);
         base.Attack(direction);
     }
