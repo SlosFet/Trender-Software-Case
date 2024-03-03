@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
-
+    public bool isAttacking { get { return _weapon.isAttacking; } }
     public void Attack()
     {
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;

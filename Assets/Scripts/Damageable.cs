@@ -10,6 +10,9 @@ public class Damageable : MonoBehaviour
 
     public void GetDamage(float damageAmount)
     {
+        if (isDeath)
+            return;
+
         SetHealth(-damageAmount);
     }
 

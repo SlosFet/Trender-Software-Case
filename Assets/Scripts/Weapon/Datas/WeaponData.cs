@@ -7,4 +7,5 @@ public class WeaponData : ScriptableObject
 {
     public float Damage;
     public float CooldownTime;
+    public float attackDuration;
 }

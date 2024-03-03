@@ -51,6 +51,8 @@ public class EnemyAI : MonoBehaviour
         isInAir = false;
         isOnCoolDown = false;
 
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
 

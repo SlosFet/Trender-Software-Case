@@ -6,15 +6,23 @@ public class MeleeWeapon : Weapon
 {
     [SerializeField] private float _distance;
     [SerializeField] private Transform _rayPoint;
+    [SerializeField] private LayerMask _desiredLayers;
+    private Rigidbody2D targetsRb;
     public override void Attack(Vector3 direction)
     {
         if (!coolDownOver)
             return;
 
-        Rigidbody2D rb = Physics2D.Raycast(_rayPoint.position, direction, _distance).collider.attachedRigidbody;
+        RaycastHit2D hitInfo = Physics2D.Raycast(_rayPoint.position, direction, _distance, _desiredLayers);
 
-        if (rb != null)
-            if (rb.TryGetComponent(out Damageable damageable))
+        if(hitInfo)
+        {
+            if (hitInfo.collider.attachedRigidbody)
+                targetsRb = hitInfo.collider.attachedRigidbody;
+        }
+
+        if (targetsRb != null)
+            if (targetsRb.TryGetComponent(out Damageable damageable))
             {
                 damageable.GetDamage(weaponData.Damage);
             }

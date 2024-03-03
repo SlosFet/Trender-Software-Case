@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyAI _enemyAI;
     [SerializeField] private EnemyAttack _enemyAttack;
@@ -10,6 +10,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyDrop _enemyDrop;
 
     [SerializeField] private GameObject _mesh;
+
+    public bool canSpawnable;
+    [SerializeField] private float _spawnAgainTime;
 
     private void Start()
     {
@@ -23,7 +26,7 @@ public class EnemyController : MonoBehaviour
 
         _enemyAI.HandleDirection();
 
-        if (_enemyAI.shouldFollow)
+        if (_enemyAI.shouldFollow && !_enemyAttack.isAttacking)
             _enemyAI.Move();
         else
         {
@@ -36,11 +39,19 @@ public class EnemyController : MonoBehaviour
     {
         _enemyDrop.GetDrop();
         _mesh.SetActive(false);
+        Invoke(nameof(SetSpawnableInvoker), _spawnAgainTime);
     }
 
     public void Spawn(Vector3 pos)
     {
         transform.position = pos;
         _mesh.SetActive(true);
+        canSpawnable = false;
+        _enemyHealth.OnSpawn();
     }    
+
+    private void SetSpawnableInvoker()
+    {
+        canSpawnable = true;
+    }
 }

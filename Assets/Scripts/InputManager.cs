@@ -34,7 +34,7 @@ public class InputManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
                 OnJumpButtonPressed.Invoke();
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
                 OnAttack.Invoke(Input.mousePosition);
 
             foreach (KeyCode kc in _skillKeyCodes)
