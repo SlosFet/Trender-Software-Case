@@ -9,13 +9,13 @@ public class ActiveSkillManager : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.OnFearSkillUse.AddListener(ActivateSkill);
+        InputManager.OnSkillUse.AddListener(ActivateSkill);
         InputManager.SetSkillSlotsKeyCodes.AddListener(SetSlotsKeyCodes);
     }
 
     private void OnDisable()
     {
-        InputManager.OnFearSkillUse.RemoveListener(ActivateSkill);
+        InputManager.OnSkillUse.RemoveListener(ActivateSkill);
         InputManager.SetSkillSlotsKeyCodes.RemoveListener(SetSlotsKeyCodes);
     }
 

@@ -6,6 +6,7 @@ public class PlayerWeaponManager : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
     private bool isGameEnded = false;
+    private Vector3 currentDirection;
     private void OnEnable()
     {
         InputManager.OnAttack.AddListener(Attack);
@@ -23,16 +24,16 @@ public class PlayerWeaponManager : MonoBehaviour
         if (isGameEnded)
             return;
 
+        currentDirection = direction;
         direction = (direction - transform.position).normalized;
         _weapon.Attack(direction);
     }
 
     private void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
+        currentDirection.z = 0;
 
-        _weapon.transform.up = (mousePosition - transform.position).normalized;
+        _weapon.transform.up = (currentDirection - transform.position).normalized;
     }
 
     private void OnGameEnd()

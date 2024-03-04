@@ -15,12 +15,21 @@ public class InputManager : MonoBehaviour
     //I tried to make it like Diablo skill system but much more simple. This events send to ActiveSkillManager and it order to
     //which slots keycode matches then skill activates
     [SerializeField] private List<KeyCode> _skillKeyCodes;
-    public static UnityEvent<KeyCode> OnFearSkillUse = new UnityEvent<KeyCode>();
+    public static UnityEvent<KeyCode> OnSkillUse = new UnityEvent<KeyCode>();
     public static UnityEvent<List<KeyCode>> SetSkillSlotsKeyCodes = new UnityEvent<List<KeyCode>>();
+
+    [SerializeField] private FixedJoystick _movementJoystick;
+    [SerializeField] private FixedJoystick _fireJoystick;
+    [SerializeField] private float _androidJumpLimitTime;
 
     private void Start()
     {
         SetSkillSlotsKeyCodes.Invoke(_skillKeyCodes);
+        if(GameManager.Instance.currentOS == CurrentOS.Windows)
+        {
+            _movementJoystick.gameObject.SetActive(false);
+            _fireJoystick.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -40,10 +49,19 @@ public class InputManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(kc))
                 {
-                    OnFearSkillUse.Invoke(kc);
+                    OnSkillUse?.Invoke(kc);
                     break;
                 }
             }
+        }
+        else if(GameManager.Instance.currentOS == CurrentOS.Android)
+        {
+            OnXAxisChange.Invoke(_movementJoystick.Direction.x);
+            if(_movementJoystick.Direction.y > 0.5f)
+                OnJumpButtonPressed.Invoke();
+
+            if (_fireJoystick.Direction.magnitude != 0)
+                OnAttack.Invoke(_fireJoystick.Direction);
         }
     }
 }
