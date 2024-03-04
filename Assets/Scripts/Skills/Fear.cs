@@ -9,7 +9,7 @@ public class Fear : ActiveSkill
     [SerializeField] private float _skillActionTime;
     public override void ActivateSkill()
     {
-        if (!canActivate)
+        if (!canActivate || isGameEnded || !isGameStarted)
             return;
 
         ToggleFearSkill.Invoke(true);

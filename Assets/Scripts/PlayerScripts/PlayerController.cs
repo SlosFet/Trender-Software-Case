@@ -20,11 +20,11 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerHealth.OnGetDamage += playerAnimController.HitAnim;
-
+        playerHealth.OnDeath += OnDeath;
     }
 
-    private void Update()
+    private void OnDeath()
     {
-        
+        GameManager.Instance.GameOver();
     }
 }

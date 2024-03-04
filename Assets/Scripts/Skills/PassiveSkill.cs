@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PassiveSkill : Skill
 {
-    private void Start()
-    {
-        canActivate = true;
-        StartCoroutine(Countdowner());
-    }
     protected override IEnumerator Countdowner()
     {
-        while(true)
+        while(!isGameEnded)
         {
             ActivateSkill();
             StartCoroutine(base.Countdowner());
             yield return new WaitForSecondsRealtime(_coolDown);
         }
-     
     }
 
+    protected override void OnGameStart()
+    {
+        base.OnGameStart();
+        canActivate = true;
+        StartCoroutine(Countdowner());
+    }
 
 }

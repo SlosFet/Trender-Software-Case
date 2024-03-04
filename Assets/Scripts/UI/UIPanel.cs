@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [field :SerializeField] public bool isPanelActive { get; private set; }
+    [field :SerializeField] public string panelName { get; private set; }
+    public virtual void Open()
     {
-        
+        isPanelActive = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Close()
     {
-        
+        isPanelActive = false;
+        gameObject.SetActive(false);
     }
 }

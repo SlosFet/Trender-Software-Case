@@ -31,8 +31,8 @@ public class InGamePanel : UIPanel
         _healthBar.fillAmount = _healthBarValue;
     }
 
-    private void SetCoinCounter(float money)
+    private void SetCoinCounter()
     {
-        _coinCounter.text = money.ToString();
+        _coinCounter.text = MoneyManager.Instance.money.ToString();
     }
 }

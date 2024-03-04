@@ -10,12 +10,30 @@ public class Skill : MonoBehaviour
     public event Action OnSkillActivated;
     public event Action OnSkillActivateable;
     public event Action<float> OnSkillLoading;
+
+    protected bool isGameEnded = false;
+    protected bool isGameStarted = false;
+
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += OnGameEnd;
+        GameManager.OnGameStarted += OnGameStart;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= OnGameEnd;
+        GameManager.OnGameStarted -= OnGameStart;
+    }
     private void Start()
     {
         canActivate = true;
     }
     public virtual void ActivateSkill()
     {
+        if (isGameEnded || !isGameStarted)
+            return;
+
         OnSkillActivated?.Invoke();
     }
 
@@ -42,5 +60,15 @@ public class Skill : MonoBehaviour
     {
         CancelInvoke(nameof(ActivateSkill));
         InvokeRepeating(nameof(ActivateSkill), 0, newCoolDown);
+    }
+
+    private void OnGameEnd()
+    {
+        isGameEnded = true;
+    }
+
+    protected virtual void OnGameStart()
+    {
+        isGameStarted = true;
     }
 }

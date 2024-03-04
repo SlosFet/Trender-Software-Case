@@ -15,20 +15,25 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] private int _startEnemyCount;
 
     private int index;
+    private bool isGameEnded = false;
+    private bool isGameStarted = false;
 
-    private void Start()
+    private void OnEnable()
     {
-        for (int i = 0; i < _startEnemyCount; i++)
-        {
-            SpawnEnemy(_enemies[index],_enemySpawnPoints[i]);
-        }
+        GameManager.OnGameOver += OnGameEnd;
+        GameManager.OnGameStarted += OnGameStarted;
+    }
 
-        StartCoroutine(EnemySpawner());
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= OnGameEnd;
+        GameManager.OnGameStarted -= OnGameStarted;
     }
 
     private void SpawnEnemy(Enemy enemy,Transform spawnPoint = null)
     {
-
+        if (isGameEnded || !isGameStarted)
+            return;
         if(!_enemies[index].canSpawnable)
         {
             IncreaseIndex();
@@ -60,5 +65,21 @@ public class EnemySpawnManager : MonoBehaviour
         index++;
         if (index >= _enemies.Count)
             index = 0;
+    }
+
+    private void OnGameEnd()
+    {
+        isGameEnded = true;
+    }
+
+    private void OnGameStarted()
+    {
+        isGameStarted = true;
+        for (int i = 0; i < _startEnemyCount; i++)
+        {
+            SpawnEnemy(_enemies[index], _enemySpawnPoints[i]);
+        }
+
+        StartCoroutine(EnemySpawner());
     }
 }

@@ -14,6 +14,17 @@ public class Enemy : MonoBehaviour
 
     public bool canSpawnable;
     [SerializeField] private float _spawnAgainTime;
+    private bool isGameEnded = false;
+
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += OnGameEnd;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= OnGameEnd;
+    }
 
     private void Start()
     {
@@ -23,7 +34,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (_enemyHealth.isDeath)
+        if (_enemyHealth.isDeath || isGameEnded)
             return;
 
         _enemyAI.HandleDirection();
@@ -55,5 +66,10 @@ public class Enemy : MonoBehaviour
     private void SetSpawnableInvoker()
     {
         canSpawnable = true;
+    }
+
+    private void OnGameEnd()
+    {
+        isGameEnded = true;
     }
 }

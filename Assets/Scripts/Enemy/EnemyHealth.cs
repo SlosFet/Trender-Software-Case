@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EnemyHealth : Damageable
@@ -7,10 +6,12 @@ public class EnemyHealth : Damageable
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Collider2D collider;
 
+    public static event Action increaseDeathCount;
     protected override void Death()
     {
         rb.simulated = false;
         collider.isTrigger = true;
+        increaseDeathCount?.Invoke();
         base.Death();
     }
 

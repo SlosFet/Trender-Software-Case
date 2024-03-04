@@ -6,9 +6,9 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager Instance;
-    public static event Action<float> OnMoneyChange;
+    public static event Action OnMoneyChange;
 
-    [field : SerializeField] public float _money { get; private set; }
+    [field : SerializeField] public float money { get; private set; }
 
     private void Awake()
     {
@@ -17,12 +17,12 @@ public class MoneyManager : MonoBehaviour
 
     private void Start()
     {
-        OnMoneyChange?.Invoke(_money);
+        OnMoneyChange?.Invoke();
     }
 
     public void AddMoney(float value)
     {
-        _money += value;
-        OnMoneyChange?.Invoke(_money);
+        money += value;
+        OnMoneyChange?.Invoke();
     }
 }

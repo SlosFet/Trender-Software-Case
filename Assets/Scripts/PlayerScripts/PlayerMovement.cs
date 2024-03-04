@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDir;
     private bool canDoubleJump;
+    private bool isGameEnded = false;
 
     //Checks if player is falling and not jumped. So set true canDoubleJump to jump again while falling(Ref from terraria)
     private bool hasJumped;
@@ -25,16 +26,21 @@ public class PlayerMovement : MonoBehaviour
     {
         InputManager.OnXAxisChange.AddListener(Move);
         InputManager.OnJumpButtonPressed.AddListener(Jump);
+        GameManager.OnGameOver += OnGameEnd;
     }
 
     private void OnDisable()
     {
         InputManager.OnXAxisChange.RemoveListener(Move);
         InputManager.OnJumpButtonPressed.RemoveListener(Jump);
+        GameManager.OnGameOver -= OnGameEnd;
     }
 
     private void Move(float direction)
     {
+        if (isGameEnded)
+            return;
+
         moveDir = new Vector2(direction * _speed, _rb.velocity.y);
         if (direction > 0)
             _mesh.localEulerAngles = Vector3.up * 0;
@@ -46,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        if (isGameEnded)
+            return;
+
         if (_groundChecker.isGrounded || canDoubleJump)
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
@@ -70,11 +79,10 @@ public class PlayerMovement : MonoBehaviour
         if (!_groundChecker.isGrounded && !hasJumped)
             canDoubleJump = true;
     }
-}
 
-[System.Serializable]
-public enum CurrentOS
-{
-    Windows,
-    Android
+    private void OnGameEnd()
+    {
+        isGameEnded = true;
+        _rb.velocity = Vector2.zero;
+    }
 }
