@@ -240,6 +240,7 @@ MonoBehaviour:
   Jump: Jump
   Fall: Fall
   Hit: Hit
+  HitTrigger: HitTrigger
   _animator: {fileID: 3948486538964420029}
 --- !u!1 &1826878705619737264
 GameObject:

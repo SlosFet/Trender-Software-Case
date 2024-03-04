@@ -8,6 +8,7 @@ public class PlayerAnimController : MonoBehaviour
     [SerializeField] private string Jump;
     [SerializeField] private string Fall;
     [SerializeField] private string Hit;
+    [SerializeField] private string HitTrigger;
 
     private Animator _animator;
     private PlayerMovement playerMovement;
@@ -51,6 +52,7 @@ public class PlayerAnimController : MonoBehaviour
 
     public void HitAnim()
     {
+        _animator.SetTrigger(HitTrigger);
         if (_animator.GetBool(Hit))
             return;
 

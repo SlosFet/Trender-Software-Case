@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7c08b5cd6cba341a65309ac71c80f0, type: 3}
   m_Name: MeleeWeaponData
   m_EditorClassIdentifier: 
-  Damage: 10
-  CooldownTime: 1
-  attackDuration: 0.8
+  Damage: 5
+  CooldownTime: 0.7

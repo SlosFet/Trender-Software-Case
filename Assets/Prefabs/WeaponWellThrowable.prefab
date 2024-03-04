@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c09b8c0010de5c46945449b9caffac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  _data: {fileID: 11400000, guid: ab13d3d98804d99409e1e9c6e9b3f121, type: 2}
   _destroyTime: 5
   _torqueForce: 20
 --- !u!50 &4750611272143716728

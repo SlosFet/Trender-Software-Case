@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ThrowableObject : MonoBehaviour
 {
-    public float damage;
+    [field : SerializeField] protected MissileData _data;
     private Rigidbody2D rb;
     private float totalDamage;
-    [SerializeField] private float _destroyTime;
     [SerializeField] private float _torqueForce;
 
     private void Awake()
@@ -26,9 +25,9 @@ public class ThrowableObject : MonoBehaviour
         //float torqueDir = Vector2.Dot(-transform.right, -transform.right);
         //rb.AddTorque(_torqueForce * torqueDir);
 
-        totalDamage = damage + extraDamage;
+        totalDamage = _data.damage + extraDamage;
         HandleRotation(direction);
-        Destroy(gameObject, _destroyTime);
+        Destroy(gameObject, _data.destroyTime);
     }
 
     private void HandleRotation(Vector3 direction)

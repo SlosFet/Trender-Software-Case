@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b7c08b5cd6cba341a65309ac71c80f0, type: 3}
-  m_Name: RangedWeaponData
+  m_Script: {fileID: 11500000, guid: f19d4e95f5e1ca0428f905e50a2d64ae, type: 3}
+  m_Name: WeaponWellMissile
   m_EditorClassIdentifier: 
-  Damage: 11
-  CooldownTime: 1.4
+  damage: 10
+  destroyTime: 5

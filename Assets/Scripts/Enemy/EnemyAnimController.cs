@@ -9,6 +9,7 @@ public class EnemyAnimController : MonoBehaviour
     [SerializeField] private string Jump;
     [SerializeField] private string Fall;
     [SerializeField] private string Hit;
+    [SerializeField] private string HitTrigger;
 
     [SerializeField] private Animator _animator;
     private Rigidbody2D rb;
@@ -51,6 +52,7 @@ public class EnemyAnimController : MonoBehaviour
 
     public void HitAnim()
     {
+        _animator.SetTrigger(HitTrigger);
         if (_animator.GetBool(Hit))
             return;
 
