@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    //Using mvc pattern here. This script controls all enemy scripts
+
     [SerializeField] private EnemyAI _enemyAI;
     [SerializeField] private EnemyAttack _enemyAttack;
     [SerializeField] private EnemyHealth _enemyHealth;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
+    //There is an enemy pool to improve performance
     [SerializeField] private List<Enemy> _enemies;
 
     [SerializeField] private List<Transform> _enemySpawnPoints;
@@ -34,6 +35,7 @@ public class EnemySpawnManager : MonoBehaviour
     {
         if (isGameEnded || !isGameStarted)
             return;
+        //if currrent enemy is still alive checks next index
         if(!_enemies[index].canSpawnable)
         {
             IncreaseIndex();
@@ -54,6 +56,7 @@ public class EnemySpawnManager : MonoBehaviour
         while(true)
         {
             yield return new WaitForSecondsRealtime(_enemySpawnTime);
+            //Every spawning decreases enemy spawn time to make it harder 
             _enemySpawnTime -= _enemySpawnTimeIncreaseAmount;
             _enemySpawnTime = Mathf.Clamp(_enemySpawnTime, _minEnemySpawnTime, Mathf.Infinity);
             SpawnEnemy(_enemies[index]);

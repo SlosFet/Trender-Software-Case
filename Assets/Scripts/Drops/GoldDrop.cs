@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GoldDrop : DropItem
 {
+    //Inherits from DropItem and handles itself's function
+
     [SerializeField] private GoldDropData data;
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveSkill : Skill
+public abstract class ActiveSkill : Skill
 {
     
 }

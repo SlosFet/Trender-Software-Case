@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Skill : MonoBehaviour
+public abstract class Skill : MonoBehaviour
 {
     [field: SerializeField] public float _coolDown { get; private set; }
     [field: SerializeField] protected bool canActivate;
 
+    //Sends infos to UI. Make it this way to seperate UI from game
     public event Action OnSkillActivated;
     public event Action OnSkillActivateable;
     public event Action<float> OnSkillLoading;

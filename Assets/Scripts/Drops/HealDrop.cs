@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealDrop : DropItem
 {
+    //Inherits from DropItem and handles itself's function
+
     [SerializeField] private HealDropData data;
     private Damageable damageable;
 

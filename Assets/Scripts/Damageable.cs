@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-public class Damageable : MonoBehaviour
+public abstract class Damageable : MonoBehaviour
 {
     [field: SerializeField] public float _health { get; private set; }
     [field: SerializeField] public float _maxHealth { get; private set; }

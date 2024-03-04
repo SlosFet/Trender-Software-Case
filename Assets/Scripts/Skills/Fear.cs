@@ -12,6 +12,7 @@ public class Fear : ActiveSkill
         if (!canActivate || isGameEnded || !isGameStarted)
             return;
 
+        //EnemyAI script has subscribed to it. When it toggle enemies goes backward
         ToggleFearSkill.Invoke(true);
         StartCoroutine(Countdowner());
         Invoke(nameof(DeactivateSkill), _skillActionTime);
