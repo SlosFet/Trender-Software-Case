@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private FixedJoystick _movementJoystick;
     [SerializeField] private FixedJoystick _fireJoystick;
-    [SerializeField] private float _androidJumpLimitTime;
+    private bool androidCanJump;
 
     private void Start()
     {
@@ -57,8 +57,13 @@ public class InputManager : MonoBehaviour
         else if(GameManager.Instance.currentOS == CurrentOS.Android)
         {
             OnXAxisChange.Invoke(_movementJoystick.Direction.x);
-            if(_movementJoystick.Direction.y > 0.5f)
+            if (_movementJoystick.Direction.y > 0.5f && androidCanJump)
+            {
                 OnJumpButtonPressed.Invoke();
+                androidCanJump = false;
+            }
+            else if (_movementJoystick.Direction.y <= 0.5f && !androidCanJump)
+                androidCanJump = true;
 
             if (_fireJoystick.Direction.magnitude != 0)
                 OnAttack.Invoke(_fireJoystick.Direction);
