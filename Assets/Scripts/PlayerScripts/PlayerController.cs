@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     PlayerWeaponManager playerWeaponManager;
     PlayerAnimController playerAnimController;
     PlayerMovement playerMovement;
+    [SerializeField] private GameObject _mesh;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDeath()
     {
+        _mesh.SetActive(false);
         GameManager.Instance.GameOver();
     }
 }

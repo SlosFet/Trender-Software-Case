@@ -50,7 +50,6 @@ public class UIManager : MonoBehaviour
         {
             if (panel.panelName.Equals(panelName))
             {
-                panel.gameObject.SetActive(true);
                 panel.Open();
                 return;
             }

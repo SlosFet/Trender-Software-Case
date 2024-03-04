@@ -6,6 +6,7 @@ public class UIPanel : MonoBehaviour
     [field :SerializeField] public string panelName { get; private set; }
     public virtual void Open()
     {
+        gameObject.SetActive(true);
         isPanelActive = true;
     }
 

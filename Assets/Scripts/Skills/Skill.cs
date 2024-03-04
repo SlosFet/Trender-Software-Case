@@ -40,7 +40,6 @@ public class Skill : MonoBehaviour
     protected virtual IEnumerator Countdowner()
     {
         canActivate = false;
-        print(4444);
         float currentTime = Time.time;
         float desiredTime = Time.time + _coolDown;
         while (currentTime < desiredTime)

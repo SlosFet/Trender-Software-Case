@@ -191,7 +191,7 @@ MonoBehaviour:
   <_maxHealth>k__BackingField: 20
   isDeath: 0
   rb: {fileID: 2760330051596822680}
-  collider: {fileID: 1624113130284130549}
+  _collider: {fileID: 1624113130284130549}
 --- !u!114 &7891210603742561182
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,13 +18,17 @@ public class GameEndPanel : UIPanel
         InGameDatas.SendPlayTime += SetTimer;
         InGameDatas.SendCollectedMoney += SetCollectedGoldText;
         InGameDatas.SendKillCount += SetKillCountText;
-        Close();
     }
     private void OnDestroy()
     {
         InGameDatas.SendPlayTime -= SetTimer;
         InGameDatas.SendCollectedMoney -= SetCollectedGoldText;
         InGameDatas.SendKillCount -= SetKillCountText;
+    }
+
+    private void Start()
+    {
+        Close();
     }
 
     private void SetTimer(float value)
@@ -57,5 +61,16 @@ public class GameEndPanel : UIPanel
     private void SetKillCountText(int value)
     {
         _killCountText.text = string.Format(_killCountString, value);
+    }
+
+
+    public void Restart()
+    {
+        SceneManagement.Instance.LoadScene("Game");
+    }
+
+    public void MainMenu()
+    {
+        SceneManagement.Instance.LoadScene("MainMenu");
     }
 }

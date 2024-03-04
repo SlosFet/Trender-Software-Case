@@ -44,7 +44,6 @@ public class Enemy : MonoBehaviour
         else
         {
             _enemyAttack.Attack();
-            print("Attacked1");
         }
     }
 

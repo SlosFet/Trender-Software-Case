@@ -22,7 +22,7 @@ public class Damageable : MonoBehaviour
     public virtual void GetHeal(float HealAmount)
     {
         SetHealth(HealAmount);
-       // OnGetHeal?.Invoke();
+        OnGetHeal?.Invoke();
     }
 
     private void SetHealth(float value)
