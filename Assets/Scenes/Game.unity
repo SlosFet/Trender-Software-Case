@@ -1289,8 +1289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHealth: {fileID: 1397546423}
-  _shakeForce: 0.3
-  _shakeDuration: 0.05
+  _shakeForce: 0.05
+  _shakeDuration: 0.02
 --- !u!1 &623690122
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,9 @@ public abstract class Damageable : MonoBehaviour
     public virtual void GetHeal(float HealAmount)
     {
         SetHealth(HealAmount);
-        OnGetHeal?.Invoke();
+        //When player die it don't invoke;
+        if (_health > 0)
+            OnGetHeal?.Invoke();
     }
 
     private void SetHealth(float value)

@@ -131,13 +131,14 @@ public class EnemyAI : MonoBehaviour
         if (directionLookEnabled)
         {
             float value = target.position.x - transform.position.x;
+            int fearReverseDirection = isFearActivated ? -1 : 1;
             if (value < 0)
             {
-                transform.localScale = new Vector3(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                transform.localScale = new Vector3(fearReverseDirection * -1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
             else if (value > 0)
             {
-                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                transform.localScale = new Vector3(fearReverseDirection * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
         }
     }
