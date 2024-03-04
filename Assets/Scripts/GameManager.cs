@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        Application.targetFrameRate = 60;
         OnGameStarting?.Invoke(gameStartTime);
         yield return new WaitForSecondsRealtime(gameStartTime);
         StartGame();
